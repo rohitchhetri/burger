@@ -1,16 +1,18 @@
 //connection information
 
 const mysql = require('mysql');
+var connection;
 
-
-//Creating Connection Variable with all credential 
-
-var connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "Root@2019@",
-    database: "burgers_db"
-});
+if (process.env.JAWSDB_URL){
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    connection = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "Root@2019@",
+        database: "burgers_db"
+    });
+};
 
 //Check the connection from above creditional 
 
